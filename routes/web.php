@@ -23,7 +23,9 @@ Route::get('/home', 'PleaseWorkController@index')->name('home');
 Route::get('/home/{message_id}', 'PleaseWorkController@show');//->name('home');
 
 
-Route::delete('/home/{{ $message_id }}/delete', 'PleaseWorkController@destroy');
+Route::any('/home/{$message_id}/delete', function($id) {
+
+});//'PleaseWorkController@destroy');
 
 
 Route::post('/home/{message_id}', 'PleaseWorkController@store');//->name('home');
