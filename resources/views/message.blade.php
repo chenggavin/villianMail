@@ -42,7 +42,8 @@
                 </table>
 
                     @endforeach
-
+                    
+                    <a style="font-size:15px; font-weight:bold;" href="\home">Back to home</a>
                 </div>
             </div>
         </div>

@@ -36,11 +36,14 @@ class HomeController extends Controller
 
     }
 
+
     public function show($message_id) {
 
         $messages = \App\Message::where([
             ['recipient_id', '=', \Auth::user()->id],
             ['id', '=', ($message_id)]])->get();
+
+         $messages->is_read = \App\Message::where('id', $message_id)->update(['is_read' => true]);
 
         return view('message', compact('messages'));
     }

@@ -24,7 +24,7 @@
                     @foreach ($messages as $message)
 
                         <tr>
-                            @if ($message->is_read)
+                            @if ($message->is_read === false)
                                 <td>
                                     @if ($message->is_starred) 
                                         <strong style="color:red;">&#9734;</strong>
