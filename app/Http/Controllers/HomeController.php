@@ -21,9 +21,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     $messages = \App\Message::all();
+    //     return view('home', compact('messages'));
+    // }
+
+
     public function index()
     {
-        $messages = \App\Message::all();
-        return view('home', compact('messages'));
+        $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
+        $messages->recipient_id = \Auth::user()->id;
+        //return $messages;
+         return view('home', compact('messages'));
+
     }
+
+
 }
