@@ -48,5 +48,23 @@ class HomeController extends Controller
         return view('message', compact('messages'));
     }
 
+    public function store($message_id) {
+
+
+       $message = new \App\Message;
+       $message->sender_id = \Auth::user()->id;
+       $message->recipient_id = request('senderName');
+       $message->subject = request('subject');
+       $message->body = request('reply');
+       $message->is_read = false;
+       $message->is_starred = false;
+       $message->save();
+
+       return redirect('/home');
+    }
+
+
+
+
 
 }

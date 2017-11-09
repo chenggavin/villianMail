@@ -40,18 +40,23 @@
                         <td>{{ $message->body }} </td>
                     </tr>
                 </table>
+                <h4 style="margin-top:50px;"><strong>reply:</strong></h4>
 
 
-
-                    <form method="POST" action="/home/">
-                      <div class="form-group" style="margin-top:50px;">
-                        <label for="exampleFormControlTextarea1">reply:</label>
+                    <form method="POST" action="/home/{{$message->id}}">
+                        {{ csrf_field() }}
+                      <div class="form-group" style="margin-top:10px;">
+                        <label for="subject">subject</label>
+                        <input class="form-control" id="subject" name="subject" for ="subject" rows="1"></input>
+                      </div>
+                      <div class="form-group" style="margin-top:10px;">
+                        <label for="reply">message</label>
                         <textarea class="form-control" id="reply" name="reply" for ="reply" rows="2"></textarea>
-
+                        <input type="hidden" id="senderName" name="senderName" for ="senderName" value="{{ $message->sender_id }}"></input>
                       </div>
                       <button type="submit" style="float:right;" class="btn btn-primary">send.</button>
                     </form>
-
+    
 
 
 
