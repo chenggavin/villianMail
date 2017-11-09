@@ -32,9 +32,17 @@ class HomeController extends Controller
     {
         $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
         $messages->recipient_id = \Auth::user()->id;
-        //return $messages;
+
          return view('home', compact('messages'));
 
+    }
+
+    public function show($message_id) {
+
+        $messages = \App\Message::find('$message_id')->get();
+        $messages->recipient_id = \Auth::user()->id;
+
+        return view('message', compact('messages'));
     }
 
 

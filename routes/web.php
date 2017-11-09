@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home/{recipient_id}', 'HomeController@show')->name('home');
+Route::get('/home/{message_id}', 'HomeController@show')->name('home');

@@ -23,15 +23,28 @@
                     </tr>
                     @foreach ($messages as $message)
                     <tr>
-                        <td>
-                            @if ($message->is_starred) 
-                                <strong>&#9734;</strong>
-                            @endif
-                        </td>
-                        <td>{{ $message->sender->name }}</td>
-                        <td>{{ $message->subject }}</td>
-                        <td>{{ $message->created_at->toDayDateTimeString() }}</td>
+                        @if ($message->is_read)
+                            <td>
+                                @if ($message->is_starred) 
+                                    <strong>&#9734;</strong>
+                                @endif
+                            </td>
+                            <td style="font-weight: bold">{{ $message->sender->name }}</td>
+                            <td style="font-weight: bold">{{ $message->subject }}</td>
+                            <td style="font-weight: bold">{{ $message->created_at->toDayDateTimeString() }}</td>
+                        @else 
+                            <td>
+                                @if ($message->is_starred) 
+                                    <strong>&#9734;</strong>
+                                @endif
+                            </td>
+                            <td>{{ $message->sender->name }}</td>
+                            <td>{{ $message->subject }}</td>
+                            <td>{{ $message->created_at->toDayDateTimeString() }}</td>
+                        @endif
+
                     </tr>
+
                     @endforeach
 
                 </div>
