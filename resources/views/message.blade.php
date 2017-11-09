@@ -14,7 +14,34 @@
                         </div>
                     @endif
 
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>From</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                    </tr>
+                    @foreach ($messages as $message)
+                    <tr>
+                        <td>
+                            @if ($message->is_starred) 
+                                <strong>&#9734;</strong>
+                            @endif
+                        </td>
+                        <td>{{ $message->sender->name }}</td>
+                        <td>{{ $message->subject }}</td>
+                        <td>{{ $message->created_at->toDayDateTimeString() }}</td>
+                    </tr>
 
+                </table>
+                <br>Message:
+                <table class="table">
+                    <tr>
+                        <td>{{ $message->body }} </td>
+                    </tr>
+                </table>
+
+                    @endforeach
 
                 </div>
             </div>
