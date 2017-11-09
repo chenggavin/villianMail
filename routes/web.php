@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/home/{message_id}', 'HomeController@show')->name('home');
 
 Route::post('/home/{message_id}', 'HomeController@store')->name('home');
+
+Route::post('/home/update/{{ $message->id }}', 'HomeController@update')->name('home');

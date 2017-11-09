@@ -32,6 +32,8 @@ class HomeController extends Controller
     {
         $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
+
+
          return view('home', compact('messages'));
 
     }
@@ -62,7 +64,22 @@ class HomeController extends Controller
 
        return redirect('/home');
     }
+    public function update($message_id)
+    {
+        $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
+        if ($messages->is_starred === true) {
+            $messages->is_starred = false;
+        }
 
+        else {
+            $messages->is_starred = true;
+        }
+        
+        
+
+         return view('home', compact('messages'));
+
+    }
 
 
 

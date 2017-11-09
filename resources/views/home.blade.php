@@ -22,12 +22,27 @@
                         <th>Date</th>
                     </tr>
                     @foreach ($messages as $message)
-
                         <tr>
                             @if ($message->is_read === false)
                                 <td>
-                                    @if ($message->is_starred) 
-                                        <strong style="color:red;">&#9734;</strong>
+                                    @if ($message->is_starred)
+
+                                    <form method="post" action="/home/update/{{ $message->id }}">
+                                      {{ method_field('PUT') }}
+                                      {{ csrf_field() }}
+                                        <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:red;">&#9734;</strong></button>
+                                    </form>
+
+                                    @else
+                                    <form method="post" action="/home/update/{{ $message->id }}">
+                                      {{ method_field('PUT') }}
+                                      {{ csrf_field() }}
+
+                                        <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:lightgrey;">&#9734;</strong></button>
+                                    </form>
+
+
+
                                     @endif
                                 </td>
                                 <div>
@@ -39,7 +54,18 @@
                             @else 
                                 <td>
                                     @if ($message->is_starred) 
-                                        <strong style="color:red;">&#9734;</strong>
+                                        <form method="post" action="/home/update/{{ $message->id }}">
+                                          {{ method_field('PUT') }}
+                                          {{ csrf_field() }}
+                                            <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:red;">&#9734;</strong></button>
+                                        </form>
+
+                                        @else
+                                        <form method="post" action="/home/update/{{ $message->id }}">
+                                          {{ method_field('PUT') }}
+                                          {{ csrf_field() }}
+                                            <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:lightgrey;">&#9734;</strong></button>
+                                        </form>
                                     @endif
                                 </td>
                                 <td><a href="/home/{{ $message->id }}">{{ $message->sender->name }}</a></td>
