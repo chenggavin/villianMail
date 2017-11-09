@@ -30,7 +30,7 @@
                         </td>
                         <td>{{ $message->sender->name }}</td>
                         <td>{{ $message->subject }}</td>
-                        <td>{{ $message->created_at }}</td>
+                        <td>{{ $message->created_at->toFormattedDateString() }}</td>
                     </tr>
                     @endforeach
 
