@@ -17,13 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PleaseWorkController@index')->name('home');
 
 
-Route::get('/home/{message_id}', 'HomeController@show');//->name('home');
+Route::get('/home/{message_id}', 'PleaseWorkController@show');//->name('home');
 
-Route::post('/home/{message_id}', 'HomeController@store');//->name('home');
 
-Route::post('/home/edit/{{ $message_id }}', 'HomeController@update');//->name('home');
+Route::delete('/home/{{ $message_id }}/delete', 'PleaseWorkController@destroy');
 
-//Route::put('/home/edit/{{ message_id }}', 'HomeController@edit');//->name('home');
+
+Route::post('/home/{message_id}', 'PleaseWorkController@store');//->name('home');
+
+// Route::resource('/home/edit/{{ $message_id }}', 'PleaseWorkController@edit');//->name('home');
+
+//Route::put('/home/edit/{{ message_id }}', 'PleaseWorkController@edit');//->name('home');

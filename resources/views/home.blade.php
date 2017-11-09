@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://use.fontawesome.com/14f1f2c704.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -20,6 +21,7 @@
                         <th>From</th>
                         <th>Subject</th>
                         <th>Date</th>
+                        <th>Delete</th>
                     </tr>
                     @foreach ($messages as $message)
                         <tr>
@@ -71,6 +73,15 @@
                                 <td><a href="/home/{{ $message->id }}">{{ $message->sender->name }}</a></td>
                                 <td><a href="/home/{{ $message->id }}">{{ $message->subject }}</a></td>
                                 <td><a href="/home/{{ $message->id }}">{{ $message->created_at->toDayDateTimeString() }}</a></td>
+                                
+                                <td>
+                                  <form method="POST" action="/home/{{ $message->id }}/delete">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-xs btn-default space-right" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                  </form>
+                                </td>
+                              
                             @endif
 
                         </tr>

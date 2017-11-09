@@ -59,10 +59,6 @@
     
 
 
-
-
-
-
                     @endforeach
 
                     <a style="font-size:15px; font-weight:bold;" href="\home">back to home.</a>

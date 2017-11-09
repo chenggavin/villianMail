@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 namespace App\Http\Controllers;
 
@@ -67,6 +67,8 @@ class HomeController extends Controller
     }
     public function edit($message_id)
     {
+
+        return 'hi';
         $message = \App\Message::find($message_id);
         if ($message->is_starred === true) {
             $message->is_starred = false;
@@ -83,8 +85,15 @@ class HomeController extends Controller
         return view('home', compact('messages'));
 
     }
-
+    public function destroy($id)
+    
+    {
+        $messages = \App\Message::find($id);
+        $messages->delete();
+        return redirect('home');
+    }
 
 
 
 }
+ -->
