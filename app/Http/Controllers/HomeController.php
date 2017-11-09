@@ -40,7 +40,7 @@ class HomeController extends Controller
 
         $messages = \App\Message::where([
             ['recipient_id', '=', \Auth::user()->id],
-            ['id', '=', 7]])->get();
+            ['id', '=', ($message_id)]])->get();
 
         return view('message', compact('messages'));
     }
