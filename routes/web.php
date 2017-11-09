@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home/{message_id}', 'HomeController@show')->name('home');
+
+Route::post('/home}', 'HomeController@post')->name('home');
