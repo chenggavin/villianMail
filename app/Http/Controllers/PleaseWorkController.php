@@ -67,12 +67,8 @@ class PleaseWorkController extends Controller
             ['recipient_id', '=', \Auth::user()->id],
             ['id', '=', ($message_id)]])->get();
 
-        $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
-        $sent = \App\Message::where('sender_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
-
-
-         return view('home', compact('messages','sent'));
+         return view('message', compact('messages','sent'));
     }
 
     /**
