@@ -28,7 +28,7 @@ Route::resource('/home', 'PleaseWorkController');
 // Route::resource('/home/{$message_id}', 'PleaseWorkController@destroy');
 
 
-// Route::post('/home/{message_id}', 'PleaseWorkController@store');
+Route::post('/home/{message_id}', 'PleaseWorkController@store');
 
  Route::resource('/home/{{ $message_id }}/edit', 'PleaseWorkController@edit');
 
