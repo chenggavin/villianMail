@@ -22,7 +22,7 @@ class PleaseWorkController extends Controller
         $sent = \App\Message::where('sender_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
 
-         return view('home', compact('messages', 'sent'));
+         return view('home', compact('messages','sent'));
     }
 
     /**
@@ -67,9 +67,12 @@ class PleaseWorkController extends Controller
             ['recipient_id', '=', \Auth::user()->id],
             ['id', '=', ($message_id)]])->get();
 
-         $messages->is_read = \App\Message::where('id', $message_id)->update(['is_read' => true]);
+        $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
-        return view('message', compact('messages'));
+        $sent = \App\Message::where('sender_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
+
+
+         return view('home', compact('messages','sent'));
     }
 
     /**
@@ -78,10 +81,19 @@ class PleaseWorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        return 'hi';
-        $message = \App\Message::find($message_id);
+
+        $message = \App\Message::find($id);
         if ($message->is_starred === true) {
             $message->is_starred = false;
         }
@@ -94,18 +106,10 @@ class PleaseWorkController extends Controller
 
         $messages = \App\Message::where('recipient_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
-        return view('home', compact('messages'));    }
+        $sent = \App\Message::where('sender_id', \Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+
+         return view('home', compact('messages','sent'));
     }
 
     /**

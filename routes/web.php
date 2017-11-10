@@ -17,19 +17,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'PleaseWorkController@index')->name('home');
+Route::resource('/home', 'PleaseWorkController');
+
+// Route::get('/home', 'PleaseWorkController@index')->name('home');
 
 
-Route::get('/home/{message_id}', 'PleaseWorkController@show');//->name('home');
+// Route::get('/home/{message_id}', 'PleaseWorkController@show');
 
 
-Route::any('/home/{$message_id}/delete', function($id) {
-
-});//'PleaseWorkController@destroy');
+// Route::resource('/home/{$message_id}', 'PleaseWorkController@destroy');
 
 
-Route::post('/home/{message_id}', 'PleaseWorkController@store');//->name('home');
+// Route::post('/home/{message_id}', 'PleaseWorkController@store');
 
-// Route::resource('/home/edit/{{ $message_id }}', 'PleaseWorkController@edit');//->name('home');
+ Route::resource('/home/{{ $message_id }}/edit', 'PleaseWorkController@edit');
 
-//Route::put('/home/edit/{{ message_id }}', 'PleaseWorkController@edit');//->name('home');
+Route::put('/home/{{ message_id }}', 'PleaseWorkController@update');

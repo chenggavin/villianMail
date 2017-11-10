@@ -29,15 +29,15 @@
                                 <td>
                                     @if ($message->is_starred)
 
-                                    <form method="post" action="/home/edit/{{ $message->id }}">
-                                      {{ method_field('POST') }}
+                                    <form method="post" action="/home/{{ $message->id }}">
+                                      {{ method_field('PATCH') }}
                                       {{ csrf_field() }}
                                         <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:red;">&#9734;</strong></button>
                                     </form>
 
                                     @else
-                                    <form method="post" action="/home/edit/{{ $message->id }}">
-                                      {{ method_field('POST') }}
+                                    <form method="post" action="/home/{{ $message->id }}">
+                                      {{ method_field('PATCH') }}
                                       {{ csrf_field() }}
 
                                         <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:lightgrey;">&#9734;</strong></button>
@@ -52,19 +52,26 @@
                                 
                                     <td style="font-weight: bold"><a href="/home/{{ $message->id }}">{{ $message->subject }}</a></td>
                                     <td style="font-weight: bold"><a href="/home/{{ $message->id }}">{{ $message->created_at->toDayDateTimeString() }}</a></td>
+                                    <td>
+                                      <form method="POST" action="/home/{{ $message->id }}">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-xs btn-default space-right" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                      </form>
+                                    </td>
                                 <div>
                             @else 
                                 <td>
                                     @if ($message->is_starred) 
-                                        <form method="post" action="/home/edit/{{ $message->id }}">
-                                          {{ method_field('POST') }}
+                                        <form method="post" action="/home/{{ $message->id }}">
+                                          {{ method_field('PATCH') }}
                                           {{ csrf_field() }}
                                             <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:red;">&#9734;</strong></button>
                                         </form>
 
                                         @else
-                                        <form method="post" action="/home/edit/{{ $message->id }}">
-                                          {{ method_field('POST') }}
+                                        <form method="post" action="/home/{{ $message->id }}">
+                                          {{ method_field('PATCH') }}
                                           {{ csrf_field() }}
                                             <button class="btn btn-xs btn-default space-right" type="submit"><strong style="color:lightgrey;">&#9734;</strong></button>
                                         </form>
@@ -75,7 +82,7 @@
                                 <td><a href="/home/{{ $message->id }}">{{ $message->created_at->toDayDateTimeString() }}</a></td>
                                 
                                 <td>
-                                  <form method="POST" action="/home/{{ $message->id }}/delete">
+                                  <form method="POST" action="/home/{{ $message->id }}">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button class="btn btn-xs btn-default space-right" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
